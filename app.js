@@ -9,7 +9,7 @@ const empleados = require('./modelos/empleados');
 app.use(cors());  
 app.use(express.json());
 
-// Conexión y sincronización con la base de datos
+// CONECTAR
 conexion.sync()
   .then(() => {
     console.log('Base de datos conectada y tabla empleados creada');
