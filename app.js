@@ -20,20 +20,20 @@ conexion.sync()
 
 //CRUD
 
-// CREATE
+//CREATE
 app.post('/empleados', async (req, res) => {
     const { nombre, telefono, fecha_de_nacimiento, sueldo } = req.body;
     const data = await empleados.create({ nombre, telefono, fecha_de_nacimiento, sueldo });
     res.send(data);
 });
 
-// READ
+//READ
 app.get('/empleados', async (req, res) => {
     const data = await empleados.findAll();
     res.send(data);
 });
 
-// UPDATE
+//UPDATE
 app.put('/empleados/:id', async (req, res) => {
     const { nombre, telefono, fecha_de_nacimiento, sueldo } = req.body;
     const { id } = req.params;
