@@ -18,22 +18,22 @@ conexion.sync()
     console.error('Error al conectar la base de datos:', error);
   });
 
-/* --- CRUD de empleados --- */
+//CRUD
 
-// Crear empleado
+// CREATE
 app.post('/empleados', async (req, res) => {
     const { nombre, telefono, fecha_de_nacimiento, sueldo } = req.body;
     const data = await empleados.create({ nombre, telefono, fecha_de_nacimiento, sueldo });
     res.send(data);
 });
 
-// Obtener todos los empleados
+// READ
 app.get('/empleados', async (req, res) => {
     const data = await empleados.findAll();
     res.send(data);
 });
 
-// Actualizar empleado por ID
+// UPDATE
 app.put('/empleados/:id', async (req, res) => {
     const { nombre, telefono, fecha_de_nacimiento, sueldo } = req.body;
     const { id } = req.params;
@@ -41,14 +41,13 @@ app.put('/empleados/:id', async (req, res) => {
     res.send(data);
 });
 
-// Eliminar empleado por ID
+//DELETE
 app.delete('/empleados/:id', async (req, res) => {
     const { id } = req.params;
     const data = await empleados.destroy({ where: { id } });
     res.send({ eliminado: data });
 });
 
-/* ------------------------ */
 
 // Iniciar servidor
 app.listen(puerto, () => {
